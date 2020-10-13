@@ -1,6 +1,10 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import LikeButton from "./components/LikeButton";
+import LikeCounter from "./components/LikeCounter";
+import AwesomeAnimals from "./components/AwesomeAnimals";
+import ArticleList from "./components/ArticleList";
 
 function App() {
   return (
@@ -15,9 +19,11 @@ function App() {
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        ></a>
+        <LikeButton />
+        <LikeCounter />
+        <AwesomeAnimals />
+        <ArticleList />
       </header>
     </div>
   );
