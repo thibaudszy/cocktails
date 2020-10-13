@@ -2,35 +2,37 @@ import React, { useState, useEffect } from "react";
 import ArticleCard from "./articleCard";
 import Timeout from "await-timeout";
 import axios from "axios";
+import ACocktail from "./ACocktail.json";
 
 export default function ArticleList() {
-  const [articles, set_articles] = useState();
-
-  function clearNotifications() {
-    set_articles([]);
-  }
+  const [cocktail, set_cocktail] = useState();
 
   useEffect(() => {
     async function doSomeDataFetching() {
-      await Timeout.set(2000);
       // Getting back data from the net, through the wire, air, and the ocean:
       const res = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts?_limit=5"
+        "https://www.thecocktaildb.com/api/json/v1/1/random.php"
       );
-
-      set_articles(res.data);
+      console.log("res", res.data.drinks);
+      set_cocktail(res.data.drinks);
     }
     doSomeDataFetching();
+    console.log("My cocktail", cocktail);
   }, []);
 
-  let display = !articles ? (
+  let display = !cocktail ? (
     <h1>Loading...</h1>
   ) : (
     <div>
-      <button onClick={clearNotifications}> Clear all </button>
-      <p>Here's a lovely list of articles, for your reading pleasure:</p>
-      {articles.map(({ id, title, body }) => {
-        return <ArticleCard key={id} title={title} content={body} />;
+      <p>Here's a lovely cocktail for you:</p>
+      {cocktail.map(({ idDrink, strDrink, strInstructions }) => {
+        return (
+          <ArticleCard
+            key={idDrink}
+            title={strDrink}
+            content={strInstructions}
+          />
+        );
       })}
     </div>
   );
