@@ -22,7 +22,6 @@ function App() {
         ></a>
         <LikeButton />
         <LikeCounter />
-        <AwesomeAnimals />
         <ArticleList />
       </header>
     </div>
