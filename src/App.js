@@ -1,9 +1,7 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import LikeButton from "./components/LikeButton";
-import LikeCounter from "./components/LikeCounter";
-import AwesomeAnimals from "./components/AwesomeAnimals";
+import RedButton from "./components/RedButton";
+
 import ArticleList from "./components/ArticleList";
 
 function App() {

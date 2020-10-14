@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import ArticleCard from "./articleCard";
 import Timeout from "await-timeout";
 import axios from "axios";
-import ACocktail from "./ACocktail.json";
+import RedButton from "./RedButton";
 
 export default function ArticleList() {
   const [cocktail, set_cocktail] = useState();
+  const [fetchNew, set_fetchNew] = useState(false);
 
   useEffect(() => {
     async function doSomeDataFetching() {
@@ -16,9 +17,10 @@ export default function ArticleList() {
       console.log("res", res.data.drinks);
       set_cocktail(res.data.drinks);
     }
+
     doSomeDataFetching();
     console.log("My cocktail", cocktail);
-  }, []);
+  }, [fetchNew]);
 
   let display = !cocktail ? (
     <h1>Loading...</h1>
@@ -27,11 +29,14 @@ export default function ArticleList() {
       <p>Here's a lovely cocktail for you:</p>
       {cocktail.map(({ idDrink, strDrink, strInstructions }) => {
         return (
-          <ArticleCard
-            key={idDrink}
-            title={strDrink}
-            content={strInstructions}
-          />
+          <div>
+            <RedButton />
+            <ArticleCard
+              key={idDrink}
+              title={strDrink}
+              content={strInstructions}
+            />
+          </div>
         );
       })}
     </div>
