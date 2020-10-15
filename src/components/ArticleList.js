@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import ArticleCard from "./articleCard";
-import Timeout from "await-timeout";
 import axios from "axios";
 import RedButton from "./RedButton";
 
 export default function ArticleList() {
   const [cocktail, set_cocktail] = useState();
   const [fetchNew, set_fetchNew] = useState(false);
-
+  const reload = () => {
+    set_fetchNew(!fetchNew);
+  };
   useEffect(() => {
     async function doSomeDataFetching() {
       // Getting back data from the net, through the wire, air, and the ocean:
@@ -26,15 +27,15 @@ export default function ArticleList() {
     <h1>Loading...</h1>
   ) : (
     <div>
-      <p>Here's a lovely cocktail for you:</p>
-      {cocktail.map(({ idDrink, strDrink, strInstructions }) => {
+      <RedButton reload={reload} />
+      {cocktail.map(({ idDrink, strDrink, strInstructions, strDrinkThumb }) => {
         return (
           <div>
-            <RedButton />
             <ArticleCard
               key={idDrink}
               title={strDrink}
               content={strInstructions}
+              image={strDrinkThumb}
             />
           </div>
         );

@@ -1,9 +1,9 @@
 import React from "react";
-import moduleName from "/home/thibaudszy/Documents/Codaisseur/Week2-React/day2-states/src/App.css";
+import "./RedButton.scss";
 
-const RedButton = () => {
+const RedButton = (props) => {
   return (
-    <button id="BigRedButton" onClick={() => window.location.reload()}>
+    <button id="BigRedButton" onClick={() => props.reload()}>
       <span>PARTY!</span>
     </button>
   );
