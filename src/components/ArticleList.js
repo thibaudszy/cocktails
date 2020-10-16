@@ -20,7 +20,6 @@ export default function ArticleList() {
     }
 
     doSomeDataFetching();
-    console.log("My cocktail", cocktail);
   }, [fetchNew]);
 
   let display = !cocktail ? (

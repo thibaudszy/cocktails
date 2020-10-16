@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.scss";
-import RedButton from "./components/RedButton";
 
 import ArticleList from "./components/ArticleList";
 
